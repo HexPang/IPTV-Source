@@ -24,18 +24,22 @@ class ChannelController extends Controller
         return view('index',['programs'=>$programs]);
     }
     public function GetChannel($hash){
-        $channels = Channel::where('pid',$hash)->get();
-        $program = Program::find($hash);
+        $program = Program::where('hash',$hash)->first();
         if($program){
-            $program->views++;
-            $program->save();
+            $channels = Channel::where('pid',$program->id)->get();
+            $program = Program::find($hash);
+            if($program){
+                $program->views++;
+                $program->save();
+            }
+            $content = "#EXTM3U\r\n";
+            foreach($channels as $channel){
+                $content .= "#EXTINF:-1,{$channel->name}\r\n{$channel->url}\r\n";
+            }
+            return response($content, 200)
+                ->header('Content-Type', "Application/m3u");
         }
-        $content = "#EXTM3U\r\n";
-        foreach($channels as $channel){
-            $content .= "#EXTINF:-1,{$channel->name}\r\n{$channel->url}\r\n";
-        }
-        return response($content, 200)
-            ->header('Content-Type', "Application/m3u");
+
     }
 
     public function GetChannelViaHTML($hash){
