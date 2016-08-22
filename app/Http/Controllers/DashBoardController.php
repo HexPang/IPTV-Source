@@ -63,14 +63,27 @@ class DashBoardController extends Controller
                     'uid' => $request->user->id
                 ]);
             }
-        }else if($action == 'remove' && $request->get('id')){
-            $channel = Channel::where('id',$request->get('id'))->where('uid',$request->user->id)->first();
-            if($channel){
+        }else if($action == 'remove' && $request->get('id')) {
+            $channel = Channel::where('id', $request->get('id'))->where('uid', $request->user->id)->first();
+            if ($channel) {
                 $channel->delete();
                 return 1;
-            }else{
+            } else {
                 return 0;
             }
+        }else if($action == 'share' && $request->get('id')){
+            $id = $request->get('id',0);
+            $program = Program::find($id);
+            if($program){
+                if($request->get('share') == 'true'){
+                    $program->hash = str_random(5);
+                }else{
+                    $program->hash = '';
+                }
+                $program->save();
+                return $program;
+            }
+            return 0;
         }else{
             return ['error' => 'UNKNOW_ACTION'];
         }

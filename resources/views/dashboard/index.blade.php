@@ -27,6 +27,10 @@
         padding:0;!important;
         width:80px;
     }
+    .w-50px{
+        width:50px;
+        margin-right:5px;
+    }
 </style>
 @endsection
 @section('body')
@@ -50,6 +54,8 @@
                     <div class="ph" href="#" ng-repeat="p in programs">
                         <label class="l-label" ng-click="editName($index)" ng-show="p.id > 0 && !p.edit" style="margin-bottom:0;">[[ p.name ]] ([[ p.channels.length ]]个频道)</label>
                         <button class="ce apn b-action" ng-show="p.id > 0 && !p.edit" ng-click="copyUrl($index)">复制链接</button>
+                        <button class="ce apn b-action w-50px" ng-show="!p.hash && !p.edit" ng-click="share($index,true)">公开</button>
+                        <button class="ce apn b-action w-50px" ng-show="p.hash && !p.edit" ng-click="share($index,false)">不公开</button>
                         <input class="form-control w-100p" ng-model="p.shareUrl" ng-show="p.shareUrl" ng-blur="p.shareUrl = null">
                         <input class="form-control w-100p" ng-model="p.name" ng-enter="keyPress()" placeholder="请输入分组名称" ng-show="p.id == 0 || p.edit" ng-blur="cancelProgram()">
                     </div>

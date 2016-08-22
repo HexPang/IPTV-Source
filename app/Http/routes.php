@@ -15,7 +15,7 @@ $app->get('/t/{hash}','ChannelController@GetChannelViaHTML');
 $app->get('/s/{hash}','ChannelController@GetChannel');
 $app->get('/login',['as'=>'login','uses'=>'DashBoardController@ShowLogin']);
 $app->post('/dashboard/login','DashBoardController@PostLogin');
-//
+$app->get('/','ChannelController@GetIndex');
 $app->group(['prefix' => 'dashboard','middleware' => 'auth','namespace' => 'App\Http\Controllers'], function () use ($app) {
     $app->get('/','DashBoardController@ShowIndex');
     $app->post('/api/{action}','DashBoardController@API_POST');

@@ -35,6 +35,9 @@
         .f14{
             font-size:14px;
         }
+        .text-center {
+            text-align: center;
+        }
         .alert-info {
             font-size: 13px;
             color: rgb(190, 58, 49);

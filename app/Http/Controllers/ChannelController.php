@@ -13,9 +13,16 @@ class ChannelController extends Controller
      */
     public function __construct()
     {
-        //
-    }
 
+    }
+    public function GetIndex(){
+        $programs = Program::where('hash','<>','')->take(30)->get();
+        foreach($programs as $k=>$v){
+            $channels = Channel::where('pid',$v->id)->get();
+            $programs[$k]['count'] = count($channels);
+        }
+        return view('index',['programs'=>$programs]);
+    }
     public function GetChannel($hash){
         $channels = Channel::where('pid',$hash)->get();
         $program = Program::find($hash);
@@ -32,12 +39,12 @@ class ChannelController extends Controller
     }
 
     public function GetChannelViaHTML($hash){
-        $program = Program::find($hash);
+        $program = Program::where('hash',$hash)->first();
         if($program){
             $program->views++;
             $program->save();
         }
-        $channels = Channel::where('pid',$hash)->get();
+        $channels = Channel::where('pid',$program->id)->get();
         return view('list',['channels' => $channels]);
     }
 }

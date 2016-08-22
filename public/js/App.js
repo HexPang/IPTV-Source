@@ -128,5 +128,14 @@ app.controller('ChannelListController',function($scope,CommonService,FileUploade
         $scope.programs.push($scope.currentItem);
         $scope.index = $scope.programs.length-1;
     }
-
+    $scope.share = function(index,enable){
+        var item = $scope.programs[index];
+        console.log(item);
+        CommonService.Http.Post('share',{id:item.id,share:enable},function(response){
+            console.log(response);
+            if(response != 0){
+                $scope.programs[index] = response;
+            }
+        })
+    }
 })
