@@ -17,6 +17,7 @@
                 </div>
             </div>
             <button type="submit" class="ce apn ame fr f14">登&nbsp;录</button>
+            <button type="button" class="ce apn ame fr f14" style="margin-right:5px;" onclick="location.href='/signup';">注&nbsp;册</button>
         </div>
     </form>
 @endsection

@@ -4,11 +4,11 @@
         <div class="ali center">
             <div class="by">
                 <h4 class="ty">
-                    直播列表
+                    直播列表 (<a href="/">返回</a>)
                 </h4>
                 @foreach($channels as $c)
                 <div class="ph">
-                    <a href="{{ $c->url }}">{{ $c->name }}</a>
+                    <a href="{{ $c->url }}" target="_blank">{{ $c->name }}</a>
                 </div>
                 @endforeach
             </div>
