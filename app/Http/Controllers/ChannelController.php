@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use App\Program;
+use App\User;
 
 class ChannelController extends Controller
 {
@@ -18,7 +19,9 @@ class ChannelController extends Controller
     public function GetIndex(){
         $programs = Program::where('hash','<>','')->take(30)->get();
         foreach($programs as $k=>$v){
+            $user = User::find($v->uid);
             $channels = Channel::where('pid',$v->id)->get();
+            $programs[$k]['user'] = $user;
             $programs[$k]['count'] = count($channels);
         }
         return view('index',['programs'=>$programs]);

@@ -38,7 +38,7 @@
         <div class="apa">
             <div class="apb">
                 <h6 class="apd">Dashboards</h6>
-                <h2 class="apc">控制台</h2>
+                <h2 class="apc">控制台 - {{ $user->name }}</h2>
             </div>
         </div>
 

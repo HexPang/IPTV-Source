@@ -9,6 +9,8 @@
             @foreach($programs as $program)
                 <div class="ph">
                     <a href="/t/{{ $program->hash }}">{{ $program->name }}</a> ({{ $program->count }}频道)
+                    <label class="fr">{{ $program->user->name }}</label>
+                    <a href="/s/{{ $program->hash }}" class="fr">右键复制源地址</a>
                 </div>
             @endforeach
         </div>

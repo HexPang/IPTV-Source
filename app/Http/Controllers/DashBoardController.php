@@ -23,8 +23,9 @@ class DashBoardController extends Controller
     }
 
     public function ShowIndex(Request $request){
+        $user = $request->user;
 //        $programs = Program::where('uid',$request->user->id)->take(10)->get();
-        return view('dashboard.index',['programs' => []]);
+        return view('dashboard.index',['programs' => [],'user'=>$user]);
     }
 
     public function API_POST(Request $request,$action){
@@ -113,6 +114,49 @@ class DashBoardController extends Controller
         return view('dashboard.login');
     }
 
+    public function ShowSignUp(Request $request){
+        if($request->method() == 'POST'){
+            $validator = Validator::make($request->all(), [
+                'email'    => 'required|email',
+                'name'     => 'required',
+                'password' => 'required',
+            ]);
+            $msg = "";
+            $user = null;
+            if ($validator->fails()) {
+                $msg = "信息不完整.";
+            }else{
+                $user = User::where('email',$request->get('email'))->first();
+                if($user){
+                    $msg = "邮箱已存在.";
+                    $user = null;
+                }else{
+                    $user = User::where('name',$request->get('name'))->first();
+                    if($user){
+                        $msg = '昵称已存在';
+                        $user = null;
+                    }else{
+                        $user = User::create([
+                            'name' => $request->get('name'),
+                            'email' => $request->get('email'),
+                            'password' => app('hash')->make($request->get('password'))
+                        ]);
+                        if(!$user){
+                            $msg = "注册失败.";
+                            $user = null;
+                        }else{
+                            $msg = "注册成功.";
+                        }
+                    }
+                }
+            }
+            return view('dashboard.signup',['msg'=>$msg,'user'=>$user]);
+        }else{
+            return view('dashboard.signup',['user'=>null]);
+        }
+
+    }
+
     public function PostLogin(Request $request){
         $errMsg = "";
 
@@ -129,14 +173,12 @@ class DashBoardController extends Controller
             if($user && Hash::check($credentials['password'],$user->password)){
                 $user->token = str_random(32);
                 $user->save();
-//                $errMsg = $user->token;
                 return redirect('/dashboard/',302,[
                     'Set-Cookie' => 'token=' . $user->token
                 ]);
             }else{
                 $errMsg = '账号或密码错误.';
             }
-            exit($errMsg);
         }
 
         return view('dashboard.login',['msg'=>$errMsg]);

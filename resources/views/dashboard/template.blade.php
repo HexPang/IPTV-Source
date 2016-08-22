@@ -32,6 +32,9 @@
         .fr{
             float:right;
         }
+        .fl{
+            float:left;
+        }
         .f14{
             font-size:14px;
         }
@@ -56,7 +59,7 @@
 
 
 <script src="/js/jquery.min.js"></script>
-<script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
+<script src="/js/angular.min.js"></script>
 <script src="/js/angular-file-upload.min.js"></script>
 <script src="/js/ACommon.js"></script>
 <script src="/js/App.js"></script>

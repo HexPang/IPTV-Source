@@ -14,6 +14,8 @@ use App\Version;
 $app->get('/t/{hash}','ChannelController@GetChannelViaHTML');
 $app->get('/s/{hash}','ChannelController@GetChannel');
 $app->get('/login',['as'=>'login','uses'=>'DashBoardController@ShowLogin']);
+$app->get('/signup',['as'=>'login','uses'=>'DashBoardController@ShowSignUp']);
+$app->post('/signup',['as'=>'login','uses'=>'DashBoardController@ShowSignUp']);
 $app->post('/dashboard/login','DashBoardController@PostLogin');
 $app->get('/','ChannelController@GetIndex');
 $app->group(['prefix' => 'dashboard','middleware' => 'auth','namespace' => 'App\Http\Controllers'], function () use ($app) {
