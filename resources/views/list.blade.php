@@ -4,7 +4,7 @@
         <div class="ali center">
             <div class="by">
                 <h4 class="ty">
-                    直播列表 (<a href="/">返回</a>)
+                    {{ app('translator')->trans('language.text.source_list') }} ( <a href="/">{{ app('translator')->trans('language.text.back') }}</a> )
                 </h4>
                 @foreach($channels as $c)
                 <div class="ph">

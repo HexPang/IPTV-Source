@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-    <title>IPTV源平台</title>
+    <title>{{ app('translator')->trans('language.title') }}</title>
 
     {{--<link href="https://fonts.useso.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">--}}
 
@@ -45,6 +45,18 @@
             font-size: 13px;
             color: rgb(190, 58, 49);
         }
+        .bottom {
+            margin: auto;
+            /*position: absolute;*/
+            left: 0; bottom: 20px; right: 0;
+        }
+        .bottom-link {
+            text-align: center;
+            color:#434857;
+        }
+        .bottom-link a {
+            color:#434857;
+        }
     </style>
     @yield('header')
 </head>
@@ -63,4 +75,10 @@
 <script src="/js/angular-file-upload.min.js"></script>
 <script src="/js/ACommon.js"></script>
 <script src="/js/App.js"></script>
-</body></html>
+</body>
+<div class="bottom">
+    <div class="bottom-link">
+        Source Code <a href="http://github.com/HexPang/IPTV-Source" target="_blank">http://github.com/HexPang/IPTV-Source</a>
+    </div>
+</div>
+</html>

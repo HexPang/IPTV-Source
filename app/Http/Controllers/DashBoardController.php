@@ -36,7 +36,7 @@ class DashBoardController extends Controller
             $program = Program::where('uid', $request->user->id)->where('name', $name)->first();
             if ($program && $id == 0) {
                 return 0;
-            } else {
+            } else if($id > 0){
                 $program = Program::where('id', $id)->where('uid', $request->user->id)->first();
                 $program->name = $name;
                 $program->save();

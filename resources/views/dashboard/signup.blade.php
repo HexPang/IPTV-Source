@@ -4,7 +4,7 @@
         <div class="ali center w-300">
             <div class="by">
                 <h4 class="ty">
-                    注册
+                    {{ app('translator')->trans('language.text.register') }}
                     @if(isset($msg) && !$user)
                         <label class="alert-info">{{ $msg }}</label>
                     @endif
@@ -15,20 +15,21 @@
                     </div>
                 @else
                     <div class="ph">
-                        <input class="form-control" name="email" type="email" placeholder="请输入邮箱">
+                        <input class="form-control" name="email" type="email" placeholder="{{ app('translator')->trans('language.placeholder.type_email') }}">
                     </div>
                     <div class="ph">
-                        <input class="form-control" name="name" type="text" placeholder="请输入昵称">
+                        <input class="form-control" name="name" type="text" placeholder="{{ app('translator')->trans('language.placeholder.type_name') }}">
                     </div>
                     <div class="ph">
-                        <input class="form-control" name="password" type="password" placeholder="请输入密码">
+                        <input class="form-control" name="password" type="password" placeholder="{{ app('translator')->trans('language.placeholder.type_password') }}">
                     </div>
                 @endif
             </div>
             @if(!$user)
-                <button type="submit" class="ce apn ame fr f14">注&nbsp;册</button>
+                <button type="submit" class="ce apn ame fr f14">{{ app('translator')->trans('language.text.register') }}</button>
+                <button type="button" class="ce apn ame fr f14" style="margin-right:5px;" onclick="location.href='/login';">{{ app('translator')->trans('language.text.login') }}</button>
             @else
-                <button type="button" class="ce apn ame fr f14" onclick="location.href='/login';">现在登录</button>
+                <button type="button" class="ce apn ame fr f14" onclick="location.href='/login';">{{ app('translator')->trans('language.text.login_now') }}</button>
             @endif
         </div>
     </form>

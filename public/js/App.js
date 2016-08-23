@@ -88,15 +88,15 @@ app.controller('ChannelListController',function($scope,CommonService,FileUploade
         if($scope.queue.length > 0){
             var item = $scope.queue[$scope.queue.length-1];
             var target = $scope.channels[$scope.channels.length - ($scope.channels.length - $scope.queue.length) - 1];
-            target.verify = "正在检查...";
+            target.verify = "Validating...";
             console.log(item);
             CommonService.Http.Get('verify',{id:item.id},function(response){
                 console.log(response);
                 target.vcode = response;
                 if(response == 200) {
-                    target.verify = "正常";
+                    target.verify = "Passed";
                 }else if(response == 0){
-                    target.verify = "无效";
+                    target.verify = "Invalid";
                 }else{
                     target.verify = "[" + response + "]";
                 }
