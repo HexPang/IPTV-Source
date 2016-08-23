@@ -52,10 +52,10 @@
                         {{ app('translator')->trans('language.text.my_channels') }}
                     </h4>
                     <div class="ph" href="#" ng-repeat="p in programs">
-                        <label class="l-label" ng-click="editName($index)" ng-show="p.id > 0 && !p.edit" style="margin-bottom:0;">[[ p.name ]] ([[ p.channels.length ]] {{ app('translator')->trans('language.text.channels') }})</label>
+                        <label class="l-label" ng-click="editName($index)" ng-show="p.id > 0 && !p.edit" style="margin-bottom:0;">[[ p.name ]] ([[ p.channels.length ]] {{ app('translator')->trans('language.text.channel') }})</label>
                         <button class="ce apn b-action" ng-show="p.id > 0 && !p.edit" ng-click="copyUrl($index)">{{ app('translator')->trans('language.text.show_url') }}</button>
                         <button class="ce apn b-action w-50px" ng-show="p.id > 0 && !p.hash && !p.edit" ng-click="share($index,true)">{{ app('translator')->trans('language.text.share') }}</button>
-                        <button class="ce apn b-action w-50px" ng-show="p.hash && !p.edit" ng-click="share($index,false)">{{ app('translator')->trans('language.text.stop_share') }}</button>
+                        <button class="ce apn b-action w-50px" ng-show="p.hash && !p.edit" ng-click="share($index,false)">{{ app('translator')->trans('language.text.not_share') }}</button>
                         <input class="form-control w-100p" ng-model="p.shareUrl" ng-show="p.shareUrl" ng-blur="p.shareUrl = null">
                         <input class="form-control w-100p" ng-model="p.name" ng-enter="keyPress()" placeholder="{{ app('translator')->trans('language.placeholder.type_program_name') }}" ng-show="p.id == 0 || p.edit" ng-blur="cancelProgram()">
                     </div>

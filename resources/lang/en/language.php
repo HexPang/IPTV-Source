@@ -13,7 +13,7 @@
             'my_channels' => 'My Programs',
             'show_url' => 'Show Url',
             'share' => 'Share',
-            'not_share' => 'Stop Share',
+            'not_share' => 'Private',
             'add_program' => 'Add Program',
             'add_channel' => 'Add Channel',
             'validate_channel' => 'Validate Channels',
