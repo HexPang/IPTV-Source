@@ -47,7 +47,7 @@
         }
         .bottom {
             margin: auto;
-            position: absolute;
+            /*position: absolute;*/
             left: 0; bottom: 20px; right: 0;
         }
         .bottom-link {

@@ -26,7 +26,9 @@
             'type_email' => 'Type Your Email',
             'type_password' => 'Type Your Password',
             'type_name' => 'Type Your Nickname',
-            'type_program_name' => "Type Program's Name."
+            'type_program_name' => "Type Program's Name.",
+            'type_channel_name' => 'Name',
+            'type_channel_url' => 'Url'
         ],
         'message' => [
             'select_program' => 'Please Select A Program.'
