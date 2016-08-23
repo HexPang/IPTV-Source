@@ -1,6 +1,3 @@
-# IPTV源管理系统
+# IPTV Source Share System
 
-基于Lumen开发的IPTV源管理系统
-
-## 功能介绍
-  源管理
+Based On Lumen

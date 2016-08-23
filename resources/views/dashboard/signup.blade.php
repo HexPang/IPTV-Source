@@ -27,6 +27,7 @@
             </div>
             @if(!$user)
                 <button type="submit" class="ce apn ame fr f14">注&nbsp;册</button>
+                <button type="button" class="ce apn ame fr f14" style="margin-right:5px;" onclick="location.href='/login';">登录</button>
             @else
                 <button type="button" class="ce apn ame fr f14" onclick="location.href='/login';">现在登录</button>
             @endif
