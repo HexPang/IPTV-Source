@@ -17,7 +17,7 @@
                 <ul class="nav of nav-stacked">
                     <li class="tq">Dashboards</li>
                     <li class="active">
-                        <a href="/dashboard/">控制台</a>
+                        <a href="/dashboard/">{{ app('translator')->trans('language.text.dashboard') }}</a>
                     </li>
                     {{--<li>--}}
                         {{--<a href="/dashboard/group/">分组管理</a>--}}
@@ -27,7 +27,7 @@
                     {{--</li>--}}
                     <li>
                         {{--/dashboard/my_follow/--}}
-                        <a href="javascript:alert('Comming Soon..');">我的订阅</a>
+                        <a href="javascript:alert('Comming Soon..');">{{ app('translator')->trans('language.text.my_subscribe') }}</a>
                     </li>
                 </ul>
                 <hr class="rw aky">
